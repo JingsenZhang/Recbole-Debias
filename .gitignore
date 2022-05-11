@@ -134,6 +134,7 @@ log/
 saved/
 dataset/
 run_hyperParams.py
-recbole-debias/model/debiased_recommender/neumf.py
-recbole-debias/properties/model/NeuMF.yaml
-
+neumf.py
+NeuMF.yaml
+.idea
+.DS_Store

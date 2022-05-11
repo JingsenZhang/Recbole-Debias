@@ -55,7 +55,7 @@ We list currently supported models according to category:
 
 - Results on [`Yahoo!R3`](results/yahoo.md) dataset; 
 - Results on [`KuaiRec`](results/kuai.md) dataset; 
-- Results on [`MovieLens-100k`](results/ml-100k.md) dataset; 
+- Results on [`MovieLens-100k`](results/ml.md) dataset; 
 
 ## The Team
 
