@@ -1,0 +1,12 @@
+embedding_size: 64
+dis_loss: 'L1'
+dis_pen: 0.01
+int_weight: 0.1
+pop_weight: 0.1
+adaptive: False
+decay: 0.9
+
+MASK_FIELD: mask
+
+neg_sampling:
+  popularity: 2

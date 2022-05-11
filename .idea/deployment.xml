@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="166" remoteFilesAllowedToDisappearOnAutoupload="false" showAutoUploadSettingsWarning="false">
+    <serverData>
+      <paths name="155">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zhangjingsen/RecBole-Debias" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="166">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zhangjingsen/RecBole-Debias" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="zhangjingsen@183.174.228.131">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/RecBole-Debias" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

@@ -1,0 +1,6 @@
+embedding_size: 64
+item_loss_weight: 1e-3
+user_loss_weight: 1e-3
+c: 0
+mlp_hidden_size: [32,1]
+dropout_prob: 0
