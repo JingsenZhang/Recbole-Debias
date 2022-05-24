@@ -2,6 +2,20 @@
 
 **RecBole-Debias** is a toolkit built upon [RecBole](https://github.com/RUCAIBox/RecBole) for reproducing and developing debiased recommendation algorithms.
 
+## Highlights
+
+* **Unified**
+
+    Unified framework, which includes several algorithms for different kinds of biases. Meanwhile, three datasets in which the distribution of training set and test set is different are provided for evaluation.
+
+* **Adaptive**
+
+    Adaptive to many base recommendation models. For simplicity, the current implementation is only based on MF model.
+    
+* **Closely**
+
+    Closely related to Recbole. The toolkit fully adopts the functions of Recbole, except that certain algorithms need to design unique components like trainer.
+
 ## Requirements
 
 ```
@@ -34,7 +48,7 @@ We list currently supported models according to category:
 
 **Selection Bias**:
 
-* **[MF_IPS](recbole_debias/model/debiased_recommender/mf_ips.py)** from Schnabel *et al.*: [Recommendations as Treatments: Debiasing Learning and Evaluation](http://proceedings.mlr.press/v48/schnabel16.pdf) (ICML 2016).
+* **[MF-IPS](recbole_debias/model/debiased_recommender/mf_ips.py)** from Schnabel *et al.*: [Recommendations as Treatments: Debiasing Learning and Evaluation](http://proceedings.mlr.press/v48/schnabel16.pdf) (ICML 2016).
 
 **Popularity Bias**:
 
@@ -46,7 +60,7 @@ We list currently supported models according to category:
 
 **Exposure Bias**:
 
-* **[URL](recbole_debias/model/debiased_recommender/url.py)** from Yuta *et al.*: [Unbiased Recommender Learning from Missing-Not-At-Random Implicit Feedback](https://arxiv.org/pdf/1909.03601.pdf) (WSDM 2020).
+* **[Rel-MF](recbole_debias/model/debiased_recommender/rel_mf.py)** from Yuta *et al.*: [Unbiased Recommender Learning from Missing-Not-At-Random Implicit Feedback](https://arxiv.org/pdf/1909.03601.pdf) (WSDM 2020).
 
 ## Datasets
  The datasets used can be downloaded from [Datasets Link](https:...).

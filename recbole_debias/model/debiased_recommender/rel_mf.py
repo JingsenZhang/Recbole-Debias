@@ -4,7 +4,7 @@
 # @Email  : zhangjingsen@ruc.edu.cn
 
 r"""
-URL
+REL_MF
 ################################################
 Reference:
     Tuta Saito et al. "Unbiased Recommender Learning from Missing-Not-At-Random Implicit Feedback"
@@ -19,7 +19,7 @@ from recbole.model.loss import RegLoss, EmbLoss
 from recbole_debias.model.abstract_recommender import DebiasedRecommender
 
 
-class URL(DebiasedRecommender):
+class REL_MF(DebiasedRecommender):
     r"""
         Two choices for loss function:
             1. nn.BCELoss  (loss_1) （suggest）
@@ -29,7 +29,7 @@ class URL(DebiasedRecommender):
     input_type = InputType.POINTWISE
 
     def __init__(self, config, dataset):
-        super(URL, self).__init__(config, dataset)
+        super(REL_MF, self).__init__(config, dataset)
 
         self.LABEL = config['LABEL_FIELD']
         self.reg_weight = config['reg_weight']

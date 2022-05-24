@@ -82,7 +82,7 @@ INTERVENE_MASK: intervene_mask
 | **MACR**             | 0.1271    | 0.7142	|0.4323	  |0.9851  |0.3900        |
 | **DICE**             | 0.1371    | 0.7147	|0.4540	  |0.9865  |0.4189        |
 | **CausE**            | 0.1081    | 0.6894	|0.3948	  |0.9724  |0.3500        |
-| **URL**              | 0.1323    | 0.7174	|0.4460	  |0.9858  |0.4060        |
+| **Rel-MF**           | 0.1323    | 0.7174	|0.4460	  |0.9858  |0.4060        |
 
 # Hyper-parameters
 For fairness, we tune the common hyper-parameters of methods as following. 
@@ -102,4 +102,4 @@ train_batch_size in [256, 512, 1024, 2048]
 | **MACR**             | learning_rate=0.001<br />embedding_size=16<br />train_batch_size=1024<br />item_loss_weight=0.001<br />user_loss_weight=0.001<br />mlp_hidden_size=[32, 1]<br />dropout_prob=0<br />c=0.1 | item_loss_weight in [0.001, 0.005, 0.01, 0.05, 0.1]<br />user_loss_weight in [0.001, 0.005, 0.01, 0.05, 0.1]<br />mlp_hidden_size in [[32, 1], [32, 16, 1]]<br />dropout_prob in [0.1, 0]<br />c in [5, 1, 0.1, 0] |
 | **DICE**             | learning_rate=0.0001<br />embedding_size=16<br />train_batch_size=512<br />dis_pen=0.001<br />int_weight=0.5<br />pop_weight=0.01 | dis_pen in [0.1, 0.01, 0.001]<br />int_weight in [0.1, 0.5, 0.01, 0.05, 0.0001]<br />pop_weight in [0.1, 0.5, 0.01, 0.05, 0.0001]|
 | **CausE**            | learning_rate=0.0001<br />embedding_size=32<br />train_batch_size=512<br />dis_pen=0.05 | dis_pen in [0.1, 0.01, 0.005, 0.001] |
-| **URL**              | learning_rate=0.001<br />embedding_size=64<br />train_batch_size=2048<br />reg_weight=0.001 | reg_weight in [0.1, 0.01, 0.001] |
+| **Rel-MF**           | learning_rate=0.001<br />embedding_size=64<br />train_batch_size=2048<br />reg_weight=0.001 | reg_weight in [0.1, 0.01, 0.001] |

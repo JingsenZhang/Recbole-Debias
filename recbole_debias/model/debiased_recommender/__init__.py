@@ -5,5 +5,5 @@ from recbole_debias.model.debiased_recommender.macr import MACR
 from recbole_debias.model.debiased_recommender.mf_ips import MF_IPS
 from recbole_debias.model.debiased_recommender.neumf import NeuMF
 from recbole_debias.model.debiased_recommender.pda import PDA
-from recbole_debias.model.debiased_recommender.url import URL
+from recbole_debias.model.debiased_recommender.rel_mf import REL_MF
 
