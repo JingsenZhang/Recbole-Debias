@@ -63,7 +63,7 @@ We list currently supported models according to category:
 * **[Rel-MF](recbole_debias/model/debiased_recommender/rel_mf.py)** from Yuta *et al.*: [Unbiased Recommender Learning from Missing-Not-At-Random Implicit Feedback](https://arxiv.org/pdf/1909.03601.pdf) (WSDM 2020).
 
 ## Datasets
- The datasets used can be downloaded from [Datasets Link](https:...).
+ The datasets used can be downloaded from [Datasets Link](https://drive.google.com/drive/folders/1W6fvJN9ZjuyeqsIuUeodDJk_ajajHkoG).
 
 ## Details
 
