@@ -70,21 +70,9 @@ INTERVENE_MASK: intervene_mask
 | ---------- | ------ | ------ | ------------- | -------- |
 | KuaiRec    | 7,176  | 10,612 |   1,153,787   | 98.49%   |
 
-# Evaluation Results
-
-| Method               | Recall@10 | MRR@10 | NDCG@10 | Hit@10 | Precision@10 |
-| -------------------- | --------- | ------ | ------- | ------ | ------------ |
-| **MF**               | 0.1331    | 0.7107	|0.4437	  |0.9816  |0.4085        |
-| **MF-IPS (User)**    | 0.1335    | 0.7065	|0.4444   |0.9837  |0.4116        |
-| **MF-IPS (Item)**    | 0.1392    | 0.6949	|0.4530   |0.9823  |0.4207        |
-| **MF-IPS (NB)**      | -         | -      | -       | -      | -            |
-| **PDA**              | 0.1332    | 0.7113	|0.4424	  |0.9823  |0.4080        |
-| **MACR**             | 0.1271    | 0.7142	|0.4323	  |0.9851  |0.3900        |
-| **DICE**             | 0.1371    | 0.7147	|0.4540	  |0.9865  |0.4189        |
-| **CausE**            | 0.1081    | 0.6894	|0.3948	  |0.9724  |0.3500        |
-| **Rel-MF**           | 0.1323    | 0.7174	|0.4460	  |0.9858  |0.4060        |
-
 # Hyper-parameters
+We tune the hyper-parameters of the implemented models and present the range for reference.
+
 For fairness, we tune the common hyper-parameters of methods as following. 
 ```
 learning_rate in [0.01, 0.005, 0.001, 0.0001]

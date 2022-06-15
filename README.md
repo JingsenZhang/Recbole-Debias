@@ -65,11 +65,11 @@ We list currently supported models according to category:
 ## Datasets
  The datasets used can be downloaded from [Datasets Link](https:...).
 
-## Results
+## Details
 
-- Results on [`Yahoo!R3`](results/yahoo.md) dataset; 
-- Results on [`KuaiRec`](results/kuai.md) dataset; 
-- Results on [`MovieLens-100k`](results/ml.md) dataset; 
+- Details on [`Yahoo!R3`](details/yahoo.md) dataset; 
+- Details on [`KuaiRec`](details/kuai.md) dataset; 
+- Details on [`MovieLens-100k`](details/ml.md) dataset; 
 
 ## The Team
 

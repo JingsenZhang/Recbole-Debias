@@ -70,21 +70,9 @@ INTERVENE_MASK: intervene_mask
 | ---------- | ------ | ------ | ------------- | -------- |
 | Yahoo!R3   | 15,400 | 1,000  |   365,704     | 97.62%   |
 
-# Evaluation Results
-
-| Method               | Recall@10 | MRR@10 | NDCG@10 | Hit@10 | Precision@10 |
-| -------------------- | --------- | ------ | ------- | ------ | ------------ |
-| **MF**               | 0.0151    | 0.0227 | 0.0119  | 0.0741 | 0.0076       |
-| **MF-IPS (User)**    | 0.0147    | 0.0218 | 0.0115  | 0.0698 | 0.0073       |
-| **MF-IPS (Item)**    | 0.0149    | 0.0235 | 0.0120  | 0.0730 | 0.0074       |
-| **MF-IPS (NB)**      | 0.0149    | 0.0237 | 0.0121  | 0.0730 | 0.0074       |
-| **PDA**              | 0.0166    | 0.0304 | 0.0145  | 0.0807 | 0.0083       |
-| **MACR**             | 0.0164    | 0.0280 | 0.0138  | 0.0792 | 0.0082       |
-| **DICE**             | 0.0166    | 0.0318 | 0.0149  | 0.0802 | 0.0083       |
-| **CausE**            | 0.0123    | 0.0192 | 0.0098  | 0.0611 | 0.0061       |
-| **Rel-MF**           | 0.0164    | 0.0279 | 0.0137  | 0.0806 | 0.0082       |
-
 # Hyper-parameters
+We tune the hyper-parameters of the implemented models and present the range for reference.
+
 For fairness, we tune the common hyper-parameters of methods as following. 
 ```
 learning_rate in [0.01, 0.005, 0.001, 0.0001]
