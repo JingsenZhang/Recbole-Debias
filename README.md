@@ -21,7 +21,7 @@
 ```
 python>=3.7.0
 pytorch>=1.7.0
-recbole>=1.0.0
+recbole~=1.0.0
 ```
 
 ## Quick-Start
