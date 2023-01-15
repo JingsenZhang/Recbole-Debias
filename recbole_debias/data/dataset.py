@@ -24,46 +24,26 @@ class DebiasDataset(Dataset):
             estimate the propensity score
         """
         interaction_data = self.inter_feat  # interaction for training
-        pscore_cnt = None
-        column = ''
 
         if self.pscore_method == 'item':  # item_id may not be consecutive
             column = 'item_id'
-            pscore = torch.unique(interaction_data[column], return_counts=True)  # (arr(item_id), arr(count))
-            pscore_id = pscore[0].tolist()
-            pscore_cnt = pscore[1]
-
             pscore_id_full = torch.arange(self.n_items)
-            pscore_cnt_full = torch.zeros(pscore_id_full.shape).long()
-            pscore_cnt_full[pscore_id] = pscore_cnt
-
-            pscore_cnt_full = pow(pscore_cnt_full / pscore_cnt_full.max(), self.eta)
-            pscore_cnt = pscore_cnt_full
-
         elif self.pscore_method == 'user':
             column = 'user_id'
-            pscore = torch.unique(interaction_data[column], return_counts=True)  # (arr(user_id), arr(count))
-            pscore_id = pscore[0].tolist()
-            pscore_cnt = pscore[1]
-
             pscore_id_full = torch.arange(self.n_users)
-            pscore_cnt_full = torch.zeros(pscore_id_full.shape).long()
-            pscore_cnt_full[pscore_id] = pscore_cnt
-
-            pscore_cnt_full = pow(pscore_cnt_full / pscore_cnt_full.max(), self.eta)
-            pscore_cnt = pscore_cnt_full
-
         elif self.pscore_method == 'nb':  # uniform & explicit feedback
             column = 'rating'
-            pscore = torch.unique(interaction_data[column], return_counts=True)
-            pscore_id = pscore[0].tolist()
-            pscore_cnt = pscore[1]
-
             pscore_id_full = torch.arange(6)
-            pscore_cnt_full = torch.zeros(pscore_id_full.shape).long()
-            pscore_cnt_full[pscore_id] = pscore_cnt
+        else:
+            raise NotImplementedError(f'Unknown `pscore_method`: {self.pscore_method}')
 
-            pscore_cnt_full = pow(pscore_cnt_full / pscore_cnt_full.max(), self.eta)
-            pscore_cnt = pscore_cnt_full
+        pscore = torch.unique(interaction_data[column], return_counts=True)
+        pscore_id = pscore[0].tolist()
+        pscore_cnt = pscore[1]
 
+        pscore_cnt_full = torch.zeros(pscore_id_full.shape).long()
+        pscore_cnt_full[pscore_id] = pscore_cnt
+
+        pscore_cnt_full = pow(pscore_cnt_full / pscore_cnt_full.max(), self.eta)
+        pscore_cnt = pscore_cnt_full
         return pscore_cnt, column
