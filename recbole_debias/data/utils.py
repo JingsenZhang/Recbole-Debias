@@ -187,7 +187,7 @@ def create_samplers(config, dataset, built_datasets):
 
     if train_neg_sample_args['distribution'] != 'none':
         if config['model'] == 'DICE':
-            sampler = DICESampler(phases, built_datasets, train_neg_sample_args['distribution'])
+            sampler = DICESampler(phases, built_datasets, train_neg_sample_args['distribution'], train_neg_sample_args["alpha"])
         elif not config['repeatable']:
             sampler = Sampler(phases, built_datasets, train_neg_sample_args['distribution'], train_neg_sample_args["alpha"])
         else:
