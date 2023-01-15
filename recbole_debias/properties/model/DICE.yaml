@@ -8,5 +8,10 @@ decay: 0.9
 
 MASK_FIELD: mask
 
-neg_sampling:
-  popularity: 2
+# refer to https://recbole.io/docs/user_guide/config/training_settings.html
+train_neg_sample_args:          # (dict) Negative sampling configuration for model training.
+  distribution: popularity      # (str) The distribution of negative items.
+  sample_num: 2                 # (int) The sampled num of negative items.
+  alpha: 1.0                    # (float) The power of sampling probability for popularity distribution.
+  dynamic: False                # (bool) Whether to use dynamic negative sampling.
+  candidate_num: 0              # (int) The number of candidate negative items when dynamic negative sampling.
