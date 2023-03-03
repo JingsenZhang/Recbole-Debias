@@ -6,7 +6,8 @@
 import logging
 from logging import getLogger
 
-from recbole.utils import init_logger, init_seed, set_color
+from recbole.data import construct_transform
+from recbole.utils import init_logger, init_seed, set_color, get_flops
 from recbole_debias.config import Config
 from recbole_debias.data import create_dataset, data_preparation
 from recbole_debias.utils import get_model, get_trainer
@@ -41,6 +42,10 @@ def run_recbole_debias(model=None, dataset=None, config_file_list=None, config_d
     init_seed(config['seed'], config['reproducibility'])
     model = get_model(config['model'])(config, train_data.dataset).to(config['device'])
     logger.info(model)
+
+    transform = construct_transform(config)
+    flops = get_flops(model, dataset, config["device"], logger, transform)
+    logger.info(set_color("FLOPs", "blue") + f": {flops}")
 
     # trainer loading and initialization
     trainer = get_trainer(config['MODEL_TYPE'], config['model'])(config, model)

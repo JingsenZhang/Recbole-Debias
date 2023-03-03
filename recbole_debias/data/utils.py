@@ -87,7 +87,7 @@ def data_preparation(config, dataset):
         train_dataset, valid_dataset, test_dataset = built_datasets
         train_sampler, valid_sampler, test_sampler = create_samplers(config, dataset, built_datasets)
 
-        train_data = get_dataloader(config, 'train')(config, train_dataset, train_sampler, shuffle=True)
+        train_data = get_dataloader(config, 'train')(config, train_dataset, train_sampler, shuffle=config["shuffle"])
         valid_data = get_dataloader(config, 'evaluation')(config, valid_dataset, valid_sampler, shuffle=False)
         test_data = get_dataloader(config, 'evaluation')(config, test_dataset, test_sampler, shuffle=False)
         if config['save_dataloaders']:
@@ -95,14 +95,22 @@ def data_preparation(config, dataset):
 
     logger = getLogger()
     logger.info(
-        set_color('[Training]: ', 'pink') + set_color('train_batch_size', 'cyan') + ' = ' +
-        set_color(f'[{config["train_batch_size"]}]', 'yellow') + set_color(' negative sampling', 'cyan') + ': ' +
-        set_color(f'[{config["neg_sampling"]}]', 'yellow')
+        set_color("[Training]: ", "pink")
+        + set_color("train_batch_size", "cyan")
+        + " = "
+        + set_color(f'[{config["train_batch_size"]}]', "yellow")
+        + set_color(" train_neg_sample_args", "cyan")
+        + ": "
+        + set_color(f'[{config["train_neg_sample_args"]}]', "yellow")
     )
     logger.info(
-        set_color('[Evaluation]: ', 'pink') + set_color('eval_batch_size', 'cyan') + ' = ' +
-        set_color(f'[{config["eval_batch_size"]}]', 'yellow') + set_color(' eval_args', 'cyan') + ': ' +
-        set_color(f'[{config["eval_args"]}]', 'yellow')
+        set_color("[Evaluation]: ", "pink")
+        + set_color("eval_batch_size", "cyan")
+        + " = "
+        + set_color(f'[{config["eval_batch_size"]}]', "yellow")
+        + set_color(" eval_args", "cyan")
+        + ": "
+        + set_color(f'[{config["eval_args"]}]', "yellow")
     )
     return train_data, valid_data, test_data
 
@@ -129,11 +137,11 @@ def get_dataloader(config, phase):
         if model_type == ModelType.DEBIAS:
             return DebiasDataloader
     else:
-        eval_strategy = config['eval_neg_sample_args']['strategy']
-        if eval_strategy in {'none', 'by'}:
-            return NegSampleEvalDataLoader
-        elif eval_strategy == 'full':
+        eval_mode = config["eval_args"]["mode"]
+        if eval_mode == "full":
             return FullSortEvalDataLoader
+        else:
+            return NegSampleEvalDataLoader
 
 
 def _get_DICE_dataloader(config, phase):
@@ -149,11 +157,11 @@ def _get_DICE_dataloader(config, phase):
     if phase == 'train':
         return DICEDataloader
     else:
-        eval_strategy = config['eval_neg_sample_args']['strategy']
-        if eval_strategy in {'none', 'by'}:
-            return NegSampleEvalDataLoader
-        elif eval_strategy == 'full':
+        eval_mode = config["eval_args"]["mode"]
+        if eval_mode == "full":
             return FullSortEvalDataLoader
+        else:
+            return NegSampleEvalDataLoader
 
 
 def create_samplers(config, dataset, built_datasets):
@@ -177,18 +185,17 @@ def create_samplers(config, dataset, built_datasets):
     sampler = None
     train_sampler, valid_sampler, test_sampler = None, None, None
 
-    if train_neg_sample_args['strategy'] != 'none':
-        if not config['repeatable']:
-            sampler = Sampler(phases, built_datasets, train_neg_sample_args['distribution'])
-        else:
-            sampler = RepeatableSampler(phases, dataset, train_neg_sample_args['distribution'])
-
+    if train_neg_sample_args['distribution'] != 'none':
         if config['model'] == 'DICE':
-            sampler = DICESampler(phases, built_datasets, train_neg_sample_args['distribution'])
+            sampler = DICESampler(phases, built_datasets, train_neg_sample_args['distribution'], train_neg_sample_args["alpha"])
+        elif not config['repeatable']:
+            sampler = Sampler(phases, built_datasets, train_neg_sample_args['distribution'], train_neg_sample_args["alpha"])
+        else:
+            sampler = RepeatableSampler(phases, dataset, train_neg_sample_args['distribution'], train_neg_sample_args["alpha"])
 
         train_sampler = sampler.set_phase('train')
 
-    if eval_neg_sample_args['strategy'] != 'none':
+    if eval_neg_sample_args['distribution'] != 'none':
         if sampler is None:
             if not config['repeatable']:
                 sampler = Sampler(phases, built_datasets, eval_neg_sample_args['distribution'])
