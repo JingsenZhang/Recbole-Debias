@@ -7,6 +7,7 @@ import os
 from recbole.config.configurator import Config as RecBole_Config
 
 from recbole_debias.utils import get_model
+from recbole_debias.evaluator import update_metrics
 
 
 class Config(RecBole_Config):
@@ -28,6 +29,7 @@ class Config(RecBole_Config):
             config_file_list (list of str): the external config file, it allows multiple config files, default is None.
             config_dict (dict): the external parameter dictionaries, default is None.
         """
+        update_metrics()
         super(Config, self).__init__(model, dataset, config_file_list, config_dict)
 
     def _get_model_and_dataset(self, model, dataset):  # 获取模型和数据集名称
@@ -77,4 +79,3 @@ class Config(RecBole_Config):
                     ]
 
         self.internal_config_dict['MODEL_TYPE'] = model_class.type
-
