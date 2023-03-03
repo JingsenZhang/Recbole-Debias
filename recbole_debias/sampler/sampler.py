@@ -136,7 +136,7 @@ class DICESampler(AbstractSampler):
             while len(check_list) > 0:
                 value, pop_mask = self.sampling(len(check_list), item_ids_repeat[check_list])
                 value_ids[check_list] = value
-                pop_mask_ids[check_list] = pop_mask_ids
+                pop_mask_ids[check_list] = pop_mask
                 mask = np.isin(value, used)
                 check_list = check_list[mask]
         else:
