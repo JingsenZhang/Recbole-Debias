@@ -88,4 +88,11 @@ Please cite the following paper as the reference if you use our code or processe
   booktitle={{CIKM}},
   year={2021}
 }
+@inproceedings{recbole[2.0],
+  title={RecBole 2.0: Towards a More Up-to-Date Recommendation Library},
+  author={Zhao, Wayne Xin and Hou, Yupeng and Pan, Xingyu and Yang, Chen and Zhang, Zeyu and Lin, Zihan and Zhang, Jingsen and Bian, Shuqing and Tang, Jiakai and Sun, Wenqi and others},
+  booktitle={Proceedings of the 31st ACM International Conference on Information \& Knowledge Management},
+  pages={4722--4726},
+  year={2022}
+}
 
